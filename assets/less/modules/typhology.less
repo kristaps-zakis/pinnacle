@@ -1,0 +1,50 @@
+@font-size__m: 14px;
+@font-size__d: 16px;
+
+@line-height__m: 26px;
+@line-height__d: 28px;
+
+@h1-size__m: 24px;
+@h1-size__d: 32px;
+
+@h1-line-height__m: 32px;
+@h1-line-height__d: 44px;
+
+body {
+  font-size: @font-size__m;
+  line-height: @line-height__m;
+}
+
+h1 {
+  font-family: Georgia;
+  font-size: @h1-size__m;
+  line-height: @h1-line-height__m;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+a {
+  color: @color-main;
+  transition: color .16s ease;
+
+  &:hover {
+    color: @color-blue;
+  }
+
+  &:active {
+    color: @color-link__clicked;
+  }
+}
+
+@media screen and (min-width: 768px)  {
+  body {
+    font-size: @font-size__d;
+    line-height: @line-height__d;
+  }
+
+  h1 {
+    font-size: @h1-size__d;
+    font-size: @h1-line-height__d;
+
+  }
+}
