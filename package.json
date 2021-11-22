@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "vue": "^2.6.14"
+  },
+  "name": "magebit",
+  "version": "1.0.0",
+  "description": "Magebit grunt",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "^1.4.1",
+    "grunt-contrib-less": "^3.0.0",
+    "grunt-contrib-watch": "^1.1.0"
+  },
+  "scripts": {
+    "test": "ttt"
+  },
+  "author": "",
+  "license": "ISC"
+}

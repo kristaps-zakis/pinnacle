@@ -1,0 +1,84 @@
+body {
+  font-size: 14px;
+  line-height: 26px;
+}
+h1 {
+  font-family: Georgia;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+a {
+  color: #131821;
+  transition: color 0.16s ease;
+}
+a:hover {
+  color: #4066A5;
+}
+a:active {
+  color: #233759;
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 28px;
+  }
+  h1 {
+    font-size: 32px;
+    font-size: 44px;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  color: #131821;
+  background: url('/assets/images/summer-mobile.jpg') no-repeat center center / cover;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  font-family: Arial;
+}
+.main-header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 21px 20px;
+}
+.main-content {
+  width: calc(100% - 40px);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+  box-sizing: border-box;
+  padding: 30px 20px;
+}
+.text {
+  color: #6A707B;
+}
+.menu {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  line-height: 24px;
+}
+.menu li {
+  list-style: none;
+  margin: 0 0 0 20px ;
+}
+.menu li:first-child {
+  margin: 0;
+}
+.menu .link {
+  color: #6A707B;
+  text-decoration: none;
+  display: block;
+}
