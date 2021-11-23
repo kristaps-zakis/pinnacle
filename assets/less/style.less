@@ -1,6 +1,7 @@
 
 @import "modules/typhology.less";
 @import "modules/color.less";
+@import "modules/sections/head.less";
 
 html,
 body {
@@ -10,24 +11,10 @@ body {
 body {
   color: @color-main;
   background: url('/assets/images/summer-mobile.jpg') no-repeat center center / cover;
-  font-size: @font-size__m;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  font-family: Arial;
-}
-
-.main-header {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  background-color: @color-white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 21px 20px;
 }
 
 .main-content {
@@ -41,25 +28,94 @@ body {
   color: @color-grey;
 }
 
-.menu {
-  display: flex;
-  flex-wrap: nowrap;
-  margin: 0;
-  padding: 0;
-  line-height: 24px;
+.subscribe-form {
+  margin: 20px 0;
 
-  li {
-    list-style: none;
-    margin: 0 0 0 20px ;
+  .control {
+    position: relative;
+  }
 
-    &:first-child {
-      margin: 0;
+  .email {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid @color-grey-lighter;
+    border-left: 4px solid @color-blue;
+    padding: 17px 49px 17px 15px;
+    margin-bottom: 20px;
+    line-height: 24px;
+    font-size: @font-size__m;
+    text-overflow: ellipsis;
+    outline: none;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    transition: box-shadow .16s ease-in-out, border-color .16s ease-in-out;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: @color-grey;
+    }
+
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: @color-grey;
+    }
+
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: @color-grey;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+      color: @color-grey;
+    }
+
+    &:focus,
+    &:hover {
+      box-shadow: 0 30px 40px rgba(19, 24, 33, .06);
+    }
+
+    &:hover {
+      border-color: @color-blue;
+
+      + .submit {
+        color: @color-blue;
+      }
     }
   }
 
-  .link {
-    color: @color-grey;
-    text-decoration: none;
-    display: block;
+  .submit {
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    line-height: 58px;
+    margin: 0;
+    padding: 0;
+    transition: color .16s ease-in-out;
+    color: rgba(19, 24, 33, .3);
+
+    &::before {
+      display: block;
+      font-family: @icons-font;
+      content: @icons-arrow;
+      width: 48px;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    z-index: -1;
+
+    + .label::before {
+      font-family: @icons-font;
+      content: @icons-checkbox;
+      color: @color-white;
+    }
+
+    &:checked + .label::before {
+      content: @icons-checkbox-checked;
+      color: @color-blue;
+    }
   }
 }

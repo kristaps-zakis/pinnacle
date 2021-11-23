@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('/assets/fonts/icons/icomoon.eot?yh3fa9');
+  src:  url('/assets/fonts/icons/icomoon.eot?yh3fa9#iefix') format('embedded-opentype'),
+  url('/assets/fonts/icons/icomoon.ttf?yh3fa9') format('truetype'),
+  url('/assets/fonts/icons/icomoon.woff?yh3fa9') format('woff'),
+  url('/assets/fonts/icons/icomoon.svg?yh3fa9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@import "icons.less";
+
+@icons-font: 'icomoon';
+
 @font-size__m: 14px;
 @font-size__d: 16px;
 
@@ -10,9 +26,14 @@
 @h1-line-height__m: 32px;
 @h1-line-height__d: 44px;
 
+
+
+
+
 body {
   font-size: @font-size__m;
   line-height: @line-height__m;
+  font-family: Arial;
 }
 
 h1 {
