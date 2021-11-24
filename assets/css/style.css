@@ -6,65 +6,6 @@
   font-style: normal;
   font-display: block;
 }
-.icon-pineapple-text .path1:before {
-  content: "\e900";
-  color: #131821;
-}
-.icon-pineapple-text .path2:before {
-  content: "\e901";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path3:before {
-  content: "\e902";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path4:before {
-  content: "\e903";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path5:before {
-  content: "\e904";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path6:before {
-  content: "\e905";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path7:before {
-  content: "\e906";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path8:before {
-  content: "\e907";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path9:before {
-  content: "\e908";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path10:before {
-  content: "\e909";
-  margin-left: -2.95019531em;
-  color: #131821;
-}
-.icon-pineapple-text .path11:before {
-  content: "\e90a";
-  margin-left: -2.95019531em;
-  color: #4066a5;
-}
-.icon-pineapple-text .path12:before {
-  content: "\e90b";
-  margin-left: -2.95019531em;
-  color: #4066a5;
-}
 .icon-pineapple-1:before {
   content: "\e90c";
   color: #4066a5;
@@ -108,18 +49,6 @@
   color: #4066a5;
   opacity: 0.3;
 }
-.icon-ic_twitter:before {
-  content: "\e914";
-}
-.icon-ic_facebook:before {
-  content: "\e915";
-}
-.icon-ic-youtube:before {
-  content: "\e916";
-}
-.icon-ic-instagram:before {
-  content: "\e917";
-}
 .icon-Checkmark .path2:before {
   content: "\e91b";
   margin-left: -1em;
@@ -136,7 +65,7 @@ body {
 h1 {
   font-family: Georgia;
   font-size: 24px;
-  line-height: 32px;
+  line-height: 34px;
   font-weight: 400;
   margin: 0 0 10px;
 }
@@ -157,7 +86,8 @@ a:active {
   }
   h1 {
     font-size: 32px;
-    font-size: 44px;
+    line-height: 44px;
+    margin-bottom: 15px;
   }
 }
 .main-header {
@@ -182,8 +112,6 @@ a:active {
 .menu {
   display: flex;
   flex-wrap: nowrap;
-  margin: 0;
-  padding: 0;
   line-height: 24px;
 }
 .menu li {
@@ -198,13 +126,41 @@ a:active {
   text-decoration: none;
   display: block;
 }
+.menu .link:hover {
+  color: #4066A5;
+  text-decoration: underline;
+}
+.menu .link:active {
+  color: #233759;
+}
 @media screen and (min-width: 768px) {
+  .main-header {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    right: 100px;
+    padding: 0;
+    background-color: transparent;
+    align-items: flex-end;
+  }
   #main-logo {
     display: flex;
     flex-wrap: nowrap;
+    margin: 0;
+    align-items: flex-end;
   }
+  .menu {
+    line-height: 26px;
+  }
+}
+@media screen and (min-width: 1000px) {
   #main-logo .text {
     display: inline-block;
+    margin-left: 15px;
+    transform: translateY(-4px);
+  }
+  .menu li {
+    margin-left: 30px;
   }
 }
 html,
@@ -213,17 +169,27 @@ body {
 }
 body {
   color: #131821;
-  background: url('/assets/images/summer-mobile.jpg') no-repeat center center / cover;
+  background: url('/assets/images/summer-mobile.jpg') no-repeat center 66px / cover;
+}
+.content-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  height: 100%;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
 }
 .main-content {
   width: calc(100% - 40px);
   background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
   box-sizing: border-box;
   padding: 30px 20px;
+  margin-top: 66px;
+  max-width: 480px;
 }
 .text {
   color: #6A707B;
@@ -233,6 +199,7 @@ body {
 }
 .subscribe-form .control {
   position: relative;
+  margin-bottom: 20px;
 }
 .subscribe-form .email {
   display: block;
@@ -241,7 +208,6 @@ body {
   border: 1px solid #E3E3E4;
   border-left: 4px solid #4066A5;
   padding: 17px 49px 17px 15px;
-  margin-bottom: 20px;
   line-height: 24px;
   font-size: 14px;
   text-overflow: ellipsis;
@@ -299,13 +265,167 @@ body {
 .subscribe-form input[type="checkbox"] {
   position: absolute;
   z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+}
+.subscribe-form input[type="checkbox"] + .label {
+  line-height: 28px;
+  display: flex;
+  align-items: center;
 }
 .subscribe-form input[type="checkbox"] + .label::before {
-  font-family: 'icomoon';
-  content: "\e919";
-  color: #fff;
+  content: url('/assets/images/icons/checkbox.svg');
+  display: inline-block;
+  line-height: 0;
 }
 .subscribe-form input[type="checkbox"]:checked + .label::before {
-  content: "\e91a";
-  color: #4066A5;
+  content: url('/assets/images/icons/checkbox-checked.svg');
+}
+.subscribe-form .checkbox-label {
+  margin-left: 15px;
+  color: #6A707B;
+}
+footer {
+  margin: 20px auto 0;
+  padding-top: 20px;
+  max-width: 400px;
+  box-shadow: inset 0 1px 0 0 #E3E3E4;
+  text-align: center;
+}
+.social {
+  margin: 0 5px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.16s ease-in-out;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.social:hover,
+.social:active {
+  box-shadow: 0 20px 40px rgba(19, 24, 33, 0.3);
+}
+.social:hover::before,
+.social:active::before {
+  color: #ffffff;
+}
+.social::before {
+  display: block;
+  font-family: 'icomoon';
+  overflow: hidden;
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  border-radius: 50%;
+  text-align: center;
+  color: rgba(19, 24, 33, 0.4);
+  box-shadow: inset 0 0 0 2px #E2E3E4;
+  transition: color 0.16s ease-in-out, box-shadow 0.16s ease-in-out;
+  font-size: 12px;
+}
+.social.facebook::before {
+  content: "\e915";
+  font-size: 16px;
+}
+.social.facebook:hover::before {
+  box-shadow: inset 0 0 0 2px #4267B2;
+  background-color: #4267B2;
+}
+.social.facebook:active::before {
+  box-shadow: inset 0 0 0 2px #2F4A80;
+  background-color: #2F4A80;
+}
+.social.instagram::before {
+  content: "\e917";
+  font-size: 16px;
+}
+.social.instagram:hover::before {
+  box-shadow: inset 0 0 0 2px #C13584;
+  background-color: #C13584;
+}
+.social.instagram:active::before {
+  box-shadow: inset 0 0 0 2px #8F2762;
+  background-color: #8F2762;
+}
+.social.twitter::before {
+  content: "\e914";
+  font-size: 13px;
+}
+.social.twitter:hover::before {
+  box-shadow: inset 0 0 0 2px #1DA1F2;
+  background-color: #1DA1F2;
+}
+.social.twitter:active::before {
+  box-shadow: inset 0 0 0 2px #177FBF;
+  background-color: #177FBF;
+}
+.social.youtube::before {
+  content: "\e916";
+  font-size: 11px;
+}
+.social.youtube:hover::before {
+  box-shadow: inset 0 0 0 2px #FF0000;
+  background-color: #FF0000;
+}
+.social.youtube:active::before {
+  box-shadow: inset 0 0 0 2px #CC0000;
+  background-color: #CC0000;
+}
+.social .name {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  body {
+    background: rgba(64, 102, 165, 0.3);
+  }
+  .desktop-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/images/summer-desktop.jpg') no-repeat right center / cover;
+    width: 40%;
+  }
+  .content-wrapper {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+    width: 60%;
+    max-width: 680px;
+    justify-content: stretch;
+    box-sizing: border-box;
+    padding: 100px;
+    position: relative;
+    z-index: 1;
+  }
+  .main-top-text,
+  .field.checkbox {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .main-content {
+    background: transparent;
+    margin: 40px auto 0;
+    width: 100%;
+    padding: 0;
+  }
+  .subscribe-form {
+    margin: 50px 0;
+  }
+  .subscribe-form .control {
+    width: calc(100% + 183px);
+    margin-bottom: 54px;
+  }
+  .subscribe-form .control button::before {
+    width: 83px;
+    box-sizing: border-box;
+    padding: 0 40px 0 19px;
+  }
+  footer {
+    margin-top: 50px;
+    padding-top: 50px;
+  }
+}
+@media screen and (min-width: 1130px) {
+  .desktop-background {
+    width: calc(100% - 680px);
+  }
 }

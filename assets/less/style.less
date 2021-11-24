@@ -10,11 +10,21 @@ body {
 
 body {
   color: @color-main;
-  background: url('/assets/images/summer-mobile.jpg') no-repeat center center / cover;
+  background: url('/assets/images/summer-mobile.jpg') no-repeat center 66px / cover;
+}
+
+.content-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  height: 100%;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
 }
 
 .main-content {
@@ -22,6 +32,8 @@ body {
   background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
   box-sizing: border-box;
   padding: 30px 20px;
+  margin-top: 66px;
+  max-width: 480px;
 }
 
 .text {
@@ -33,6 +45,7 @@ body {
 
   .control {
     position: relative;
+    margin-bottom: 20px;
   }
 
   .email {
@@ -42,7 +55,6 @@ body {
     border: 1px solid @color-grey-lighter;
     border-left: 4px solid @color-blue;
     padding: 17px 49px 17px 15px;
-    margin-bottom: 20px;
     line-height: 24px;
     font-size: @font-size__m;
     text-overflow: ellipsis;
@@ -106,16 +118,208 @@ body {
   input[type="checkbox"] {
     position: absolute;
     z-index: -1;
+    pointer-events: none;
+    opacity: 0;
 
-    + .label::before {
-      font-family: @icons-font;
-      content: @icons-checkbox;
-      color: @color-white;
+    + .label {
+      line-height: 28px;
+      display: flex;
+      align-items: center;
+
+      &::before {
+        content: url('/assets/images/icons/checkbox.svg');
+        display: inline-block;
+        line-height: 0;
+      }
     }
 
     &:checked + .label::before {
-      content: @icons-checkbox-checked;
-      color: @color-blue;
+      content: url('/assets/images/icons/checkbox-checked.svg');
     }
+  }
+
+  .checkbox-label {
+    margin-left: 15px;
+    color: @color-grey;
+  }
+}
+
+footer {
+  margin: 20px auto 0;
+  padding-top: 20px;
+  max-width: 400px;
+  box-shadow: inset 0 1px 0 0 @color-grey-lighter;
+  text-align: center;
+}
+
+.social {
+  margin: 0 5px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow .16s ease-in-out;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &:hover,
+  &:active {
+    box-shadow: 0 20px 40px rgba(19, 24, 33, .3);
+
+    &::before {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  &::before {
+    display: block;
+    font-family: @icons-font;
+    overflow: hidden;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    border-radius: 50%;
+    text-align: center;
+    color: rgba(19, 24, 33, .4);
+    box-shadow: inset 0 0 0 2px @border-color;
+    transition: color .16s ease-in-out, box-shadow .16s ease-in-out;
+    font-size: 12px;
+  }
+
+  &.facebook {
+    &::before {
+      content: @icon-facebook;
+      font-size: 16px;
+    }
+
+    &:hover::before {
+      box-shadow: inset 0 0 0 2px #4267B2;
+      background-color: #4267B2;
+    }
+
+    &:active::before {
+      box-shadow: inset 0 0 0 2px #2F4A80;
+      background-color: #2F4A80;
+    }
+  }
+
+  &.instagram {
+    &::before {
+      content: @icon-instagram;
+      font-size: 16px;
+    }
+
+    &:hover::before {
+      box-shadow: inset 0 0 0 2px #C13584;
+      background-color: #C13584;
+    }
+
+    &:active::before {
+      box-shadow: inset 0 0 0 2px #8F2762;
+      background-color: #8F2762;
+    }
+  }
+
+
+  &.twitter {
+    &::before {
+      content: @icon-twitter;
+      font-size: 13px;
+    }
+
+    &:hover::before {
+      box-shadow: inset 0 0 0 2px #1DA1F2;
+      background-color: #1DA1F2;
+    }
+
+    &:active::before {
+      box-shadow: inset 0 0 0 2px #177FBF;
+      background-color: #177FBF;
+    }
+  }
+
+  &.youtube {
+    &::before {
+      content: @icon-youtube;
+      font-size: 11px;
+    }
+
+    &:hover::before {
+      box-shadow: inset 0 0 0 2px #FF0000;
+      background-color: #FF0000;
+    }
+
+    &:active::before {
+      box-shadow: inset 0 0 0 2px #CC0000;
+      background-color: #CC0000;
+    }
+  }
+
+  .name {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    background: rgba(64, 102, 165, .3);
+  }
+
+  .desktop-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/images/summer-desktop.jpg') no-repeat right center / cover;
+    width: 40%;
+  }
+
+  .content-wrapper {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+    width: 60%;
+    max-width: 680px;
+    justify-content: stretch;
+    box-sizing: border-box;
+    padding: 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .main-top-text,
+  .field.checkbox {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .main-content {
+    background: transparent;
+    margin: 40px auto 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .subscribe-form {
+    margin: 50px 0;
+
+    .control {
+      width: calc(~'100% + 183px');
+      margin-bottom: 54px;
+
+      button::before {
+        width: 83px;
+        box-sizing: border-box;
+        padding: 0 40px 0 19px;
+      }
+    }
+  }
+
+  footer {
+    margin-top: 50px;
+    padding-top: 50px;
+  }
+}
+
+@media screen and (min-width: 1130px) {
+  .desktop-background {
+    width: calc(~'100% - 680px');
   }
 }
