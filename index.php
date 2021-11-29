@@ -5,6 +5,7 @@
     <title>Magebit homework || Kristaps Zaķis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
     <link rel="stylesheet" type="text/css" media="all" href="assets/css/normalize.css" />
     <link rel="stylesheet" type="text/css" media="all" href="assets/css/style.css" />
     <link rel="preload" as="image" href="/assets/images/pineapple-logo.svg">
@@ -27,7 +28,7 @@
             </nav>
         </header>
         <main class="main-content" id="app">
-            <div class="form-content">
+            <div class="form-content" v-if="!successSubmitted">
                 <div class="main-top-text">
                     <h1>Subscribe to newsletter</h1>
                     <div class="text">Subscribe to our newsletter and get 10% discount on pineapple glasses.</div>
@@ -37,46 +38,66 @@
                     <div class="control">
                         <input type="text"
                                class="email"
-                               v-model="form.email"
+                               v-model="email"
                                placeholder="Type your email address here…" />
-                        <button type="submit" value="subscribe" class="action submit"></button>
+                        <button type="submit"
+                                value="subscribe"
+                                :disabled="!allowSubmit"
+                                class="action submit"></button>
                     </div>
-                    <div class="errors" v-if="!emailSet">
-                        <div class="error-message" v-if="!emailIsValid">
-                            Email address is required
-                        </div>
-                        <div class="error-message" v-if="!emailIsRequired">
-                            Please provide a valid e-mail address
-                        </div>
-
-                        <div class="error-message" v-if="!emailIsPropper">
-                            We are not accepting subscriptions from Colombia emails
+                    <div class="email-error" v-bind:class="{show: emailErrors }">
+                        <div class="error-message"
+                             v-bind:class="{show: emailErrors }"
+                             v-if="emailErrors"
+                             v-model="emailErrorMessage">
+                            {{ emailErrorMessage }}
                         </div>
                     </div>
-
 
                     <div class="field checkbox">
-                        <input type="checkbox" id="newsletter-agree" v-model="form.termsApproved" name="newsletter-agree" />
+                        <input type="checkbox"
+                               id="newsletter-agree"
+                               v-model="termsApproved"
+                               name="newsletter-agree" />
+
                         <label for="newsletter-agree" class="label">
                             <span class="checkbox-label">I agree to <a href="#">terms of service</a></span>
                         </label>
-                        <div class="error-message" v-if="!termsApproved">
+
+                        <div class="error-message" v-bind:class="{show: termsError }" v-if="termsError">
                             You must accept the terms and conditions
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div class="success-content" v-if="successSubmit">
-                Success submit
+            <div class="success-content" v-bind:class="{show: successfulSubscribe }" v-if="successfulSubscribe">
+                <div class="success-image-holder">
+                    <img src="/assets/images/icons/success.svg" width="44" height="70">
+                </div>
+
+                <h1>Thanks for subscribing!</h1>
+
+                <div class="text">
+                    You have successfully subscribed to our email listing. Check your email for the discount code.
+                </div>
             </div>
 
             <footer>
                 <ul>
-                    <a href="#" class="social facebook"><span class="name">Facebook</span></a>
-                    <a href="#" class="social instagram"><span class="name">Instagram</span></a>
-                    <a href="#" class="social twitter"><span class="name">Twitter</span></a>
-                    <a href="#" class="social youtube"><span class="name">Youtube</span></a>
+                    <a href="https://www.facebook.com/magebitcom" target="_blank" class="social facebook">
+                        <span class="name">Facebook</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/magebitcom/" target="_blank" class="social instagram">
+                        <span class="name">Instagram</span>
+                    </a>
+                    <a href="https://twitter.com/magebit" target="_blank" class="social twitter" >
+                        <span class="name">Twitter</span>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCgSia5PNNQjXqX8pVGb8A0A#" target="_blank" class="social youtube">
+                        <span class="name">Youtube</span>
+                    </a>
                 </ul>
             </footer>
         </main>

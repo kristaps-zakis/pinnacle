@@ -11,6 +11,7 @@ body {
 body {
   color: @color-main;
   background: url('/assets/images/summer-mobile.jpg') no-repeat center 66px / cover;
+  overflow: hidden;
 }
 
 .content-wrapper {
@@ -19,6 +20,10 @@ body {
   align-content: center;
   justify-content: center;
   height: 100%;
+  box-sizing: border-box;
+  padding: 45px 0;
+  overflow: auto;
+  margin: 0;
 }
 
 ul,
@@ -86,7 +91,7 @@ li {
     &:hover {
       border-color: @color-blue;
 
-      + .submit {
+      + .submit:not([disabled]) {
         color: @color-blue;
       }
     }
@@ -103,6 +108,12 @@ li {
     padding: 0;
     transition: color .16s ease-in-out;
     color: rgba(19, 24, 33, .3);
+    cursor: pointer;
+
+    &[disabled] {
+      cursor: auto;
+      color: rgba(19, 24, 33, .3);
+    }
 
     &::before {
       display: block;
@@ -142,6 +153,10 @@ li {
     margin-left: 15px;
     color: @color-grey;
   }
+}
+
+.success-image-holder {
+  margin-bottom: 40px;
 }
 
 footer {
@@ -219,7 +234,6 @@ footer {
     }
   }
 
-
   &.twitter {
     &::before {
       content: @icon-twitter;
@@ -259,6 +273,46 @@ footer {
   }
 }
 
+.field.checkbox {
+  position: relative;
+}
+
+.email-error {
+  position: relative;
+}
+
+.error-message {
+  font-size: 12px;
+  color: @color-red;
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+.email-error {
+  .error-message {
+    margin-top: -16px;
+    margin-bottom: 16px;
+  }
+}
+
+.success-content {
+  display: none;
+  margin-bottom: 40px;
+
+  &.show {
+    display: block;
+  }
+}
+
+@media  (max-device-width: 767px) and (orientation: landscape) {
+  .content-wrapper {
+    margin: 48px 0 16px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   body {
     background: rgba(64, 102, 165, .3);
@@ -278,10 +332,11 @@ footer {
     width: 60%;
     max-width: 680px;
     justify-content: stretch;
-    box-sizing: border-box;
     padding: 100px;
     position: relative;
     z-index: 1;
+    overflow: initial;
+    margin: 0;
   }
 
   .main-top-text,
@@ -292,9 +347,10 @@ footer {
 
   .main-content {
     background: transparent;
-    margin: 40px auto 0;
+    margin: 130px auto 0;
     width: 100%;
     padding: 0;
+
   }
 
   .subscribe-form {
@@ -309,6 +365,39 @@ footer {
         box-sizing: border-box;
         padding: 0 40px 0 19px;
       }
+    }
+  }
+
+  .error-message {
+    position: absolute;
+    top: 100%;
+  }
+
+  .email-error {
+    display: none;
+
+    &.show {
+      display: block;
+      margin: -48px auto 20px;
+      height: 28px;
+      max-width: 400px;
+    }
+
+    .error-message {
+      top: 0;
+      margin: 0;
+    }
+  }
+
+  .success-image-holder {
+    margin-bottom: 30px;
+  }
+
+  .success-content {
+    margin-bottom: 50px;
+
+    h1 {
+      margin-bottom: 20px;
     }
   }
 

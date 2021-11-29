@@ -170,6 +170,7 @@ body {
 body {
   color: #131821;
   background: url('/assets/images/summer-mobile.jpg') no-repeat center 66px / cover;
+  overflow: hidden;
 }
 .content-wrapper {
   display: flex;
@@ -177,6 +178,10 @@ body {
   align-content: center;
   justify-content: center;
   height: 100%;
+  box-sizing: border-box;
+  padding: 45px 0;
+  overflow: auto;
+  margin: 0;
 }
 ul,
 li {
@@ -238,7 +243,7 @@ li {
 .subscribe-form .email:hover {
   border-color: #4066A5;
 }
-.subscribe-form .email:hover + .submit {
+.subscribe-form .email:hover + .submit:not([disabled]) {
   color: #4066A5;
 }
 .subscribe-form .submit {
@@ -251,6 +256,11 @@ li {
   margin: 0;
   padding: 0;
   transition: color 0.16s ease-in-out;
+  color: rgba(19, 24, 33, 0.3);
+  cursor: pointer;
+}
+.subscribe-form .submit[disabled] {
+  cursor: auto;
   color: rgba(19, 24, 33, 0.3);
 }
 .subscribe-form .submit::before {
@@ -284,6 +294,9 @@ li {
 .subscribe-form .checkbox-label {
   margin-left: 15px;
   color: #6A707B;
+}
+.success-image-holder {
+  margin-bottom: 40px;
 }
 footer {
   margin: 20px auto 0;
@@ -374,6 +387,36 @@ footer {
 .social .name {
   display: none;
 }
+.field.checkbox {
+  position: relative;
+}
+.email-error {
+  position: relative;
+}
+.error-message {
+  font-size: 12px;
+  color: #6c0909;
+  display: none;
+}
+.error-message.show {
+  display: block;
+}
+.email-error .error-message {
+  margin-top: -16px;
+  margin-bottom: 16px;
+}
+.success-content {
+  display: none;
+  margin-bottom: 40px;
+}
+.success-content.show {
+  display: block;
+}
+@media (max-device-width: 767px) and (orientation: landscape) {
+  .content-wrapper {
+    margin: 48px 0 16px;
+  }
+}
 @media screen and (min-width: 768px) {
   body {
     background: rgba(64, 102, 165, 0.3);
@@ -391,10 +434,11 @@ footer {
     width: 60%;
     max-width: 680px;
     justify-content: stretch;
-    box-sizing: border-box;
     padding: 100px;
     position: relative;
     z-index: 1;
+    overflow: initial;
+    margin: 0;
   }
   .main-top-text,
   .field.checkbox {
@@ -403,7 +447,7 @@ footer {
   }
   .main-content {
     background: transparent;
-    margin: 40px auto 0;
+    margin: 130px auto 0;
     width: 100%;
     padding: 0;
   }
@@ -418,6 +462,32 @@ footer {
     width: 83px;
     box-sizing: border-box;
     padding: 0 40px 0 19px;
+  }
+  .error-message {
+    position: absolute;
+    top: 100%;
+  }
+  .email-error {
+    display: none;
+  }
+  .email-error.show {
+    display: block;
+    margin: -48px auto 20px;
+    height: 28px;
+    max-width: 400px;
+  }
+  .email-error .error-message {
+    top: 0;
+    margin: 0;
+  }
+  .success-image-holder {
+    margin-bottom: 30px;
+  }
+  .success-content {
+    margin-bottom: 50px;
+  }
+  .success-content h1 {
+    margin-bottom: 20px;
   }
   footer {
     margin-top: 50px;

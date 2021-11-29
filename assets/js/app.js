@@ -4,51 +4,70 @@ new Vue({
 
     data () {
         return {
-            form: {
-                email: null,
-                termsApproved: false
-            }
+            email: '',
+            termsApproved: false,
+            emailErrorMessage: '',
+            validate: false,
+            successSubmitted: false
         }
     },
 
     computed: {
-        emailSet () {
-            return this.emailIsValid && this.emailIsRequired && this.emailIsPropper
+        allowSubmit () {
+           return (!this.termsError && this.validateEmail && this.validate) || !this.validate;
         },
 
-        emailIsValid () {
+        termsError () {
+            if (!this.validate) {
+                return ;
+            }
 
+            return !this.termsApproved;
         },
 
-        emailIsRequired () {
+        emailErrors () {
+            if (!this.validate) {
+                return ;
+            }
 
+            return !this.validateEmail;
         },
 
-        emailIsPropper () {
+        validateEmail () {
+            if (this.email === '') {
+                this.emailErrorMessage = 'Email address is required';
 
+                return false;
+            }
+
+            if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+                this.emailErrorMessage = 'Please enter a valid email address';
+
+                return false;
+            }
+
+            if (/.co$/.test(this.email)) {
+                this.emailErrorMessage = 'We are not accepting subscriptions from Colombia emails';
+
+                return false;
+            }
+
+            return true;
         },
 
-        termsApproved () {
-
-        },
-
-        successSubmit () {
-            return this.emailIsPropper && this.termsApproved
+        successfulSubscribe () {
+            return this.successSubmitted;
         }
     },
 
     methods: {
         submitForm () {
-            const formIsValid = true;
+            this.validate = true;
 
-            const emailSet = false;
-
-            if (formIsValid) {
-                console.log('Form Submitted', this.form);
-            } else {
-                console.log('Invalid?');
+            if (this.allowSubmit) {
+                this.successSubmitted = true;
+                console.log('Form Submitted', this.email);
             }
-
         }
     }
 })
