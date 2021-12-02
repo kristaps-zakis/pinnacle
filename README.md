@@ -10,7 +10,7 @@ This is my test work for Magebit.
     <li>There is attached sql file to create db with sample data</li> 
 </ul>
 
-##Runningg
+## Runningg
 Project runs with htaccess configs. I was not able to figure out ngnix config for it to run with PHP MVC
 
 there is attached image how it looks on local environment "img.png"
