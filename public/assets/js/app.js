@@ -1,4 +1,3 @@
-
 new Vue({
     el: '#app',
 
@@ -65,8 +64,17 @@ new Vue({
             this.validate = true;
 
             if (this.allowSubmit) {
-                this.successSubmitted = true;
-                console.log('Form Submitted', this.email);
+                axios.post('/home/post',
+                    {
+                        email: this.email,
+                        vue: true,
+                        'newsletter-agree': this.termsApproved ? 'on' : ''
+                    })
+                    .then(response => {
+                        if (response.statusText === "OK") {
+                            this.successSubmitted = true;
+                        }
+                    })
             }
         }
     }

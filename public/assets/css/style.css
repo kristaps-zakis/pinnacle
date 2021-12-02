@@ -387,6 +387,9 @@ footer {
 .social .name {
   display: none;
 }
+.form-content.hide {
+  display: none;
+}
 .field.checkbox {
   position: relative;
 }
